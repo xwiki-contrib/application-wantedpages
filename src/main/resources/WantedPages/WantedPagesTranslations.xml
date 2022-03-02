@@ -1,0 +1,61 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<xwikidoc version="1.4" reference="WantedPages.WantedPagesTranslations" locale="">
+  <web>WantedPages</web>
+  <name>WantedPagesTranslations</name>
+  <language/>
+  <defaultLanguage>en</defaultLanguage>
+  <translation>0</translation>
+  <creator>XWiki.Eden</creator>
+  <creationDate>1646245596000</creationDate>
+  <parent>WebHome</parent>
+  <author>XWiki.Eden</author>
+  <contentAuthor>XWiki.Eden</contentAuthor>
+  <date>1646251607000</date>
+  <contentUpdateDate>1646246989000</contentUpdateDate>
+  <version>2.8</version>
+  <title>$services.localization.render("wantedPages.applicationName") Translations</title>
+  <comment>Update document after refactoring.</comment>
+  <minorEdit>true</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content>wantedPages.applicationName=Wanted Pages&#xd;
+wantedPages.description=The following is a dynamic list of nonexistent documents to which there are links in existing documents. They are listed in descending order from the number of documents linking to them. (The count is listed to the right of the link name.) Clicking on a link will bring you to the page-creation screen for that page. You can click on the count "(#)" to show a list of the documents that link to that nonexistent page.&#xd;
+wantedPages.hiddenPagesNote=The list below respects your "Display Hidden Pages" preference and, as such, may not be exhaustive.</content>
+  <object>
+    <name>WantedPages.WantedPagesTranslations</name>
+    <number>0</number>
+    <className>XWiki.TranslationDocumentClass</className>
+    <guid>2be64aa2-1b5b-42fc-ad9e-8b8e4ea593b1</guid>
+    <class>
+      <name>XWiki.TranslationDocumentClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <scope>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>scope</name>
+        <number>1</number>
+        <prettyName>Scope</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>GLOBAL|WIKI|USER|ON_DEMAND</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </scope>
+    </class>
+    <property>
+      <scope>WIKI</scope>
+    </property>
+  </object>
+</xwikidoc>

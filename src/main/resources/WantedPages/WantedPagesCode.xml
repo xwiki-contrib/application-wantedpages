@@ -1,0 +1,329 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<xwikidoc version="1.4" reference="WantedPages.WantedPagesCode" locale="">
+  <web>WantedPages</web>
+  <name>WantedPagesCode</name>
+  <language/>
+  <defaultLanguage>en</defaultLanguage>
+  <translation>0</translation>
+  <creator>XWiki.Eden</creator>
+  <creationDate>1645727218000</creationDate>
+  <parent>xwiki:WantedPages.WantedPagesCode</parent>
+  <author>XWiki.Eden</author>
+  <contentAuthor>XWiki.Eden</contentAuthor>
+  <date>1646251290000</date>
+  <contentUpdateDate>1646250973000</contentUpdateDate>
+  <version>10.8</version>
+  <title>$services.localization.render("wantedPages.applicationName") Code</title>
+  <comment>Update property hidden</comment>
+  <minorEdit>true</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content>{{translation key="wantedPages.description"/}}&#xd;
+&#xd;
+&#xd;
+//{{translation key="wantedPages.hiddenPagesNote"/}}//&#xd;
+&#xd;
+&#xd;
+{{velocity}}&#xd;
+## The first query will fetch each wanted link that is clean and not a URL, as well as the number of documents that include that link at least once.&#xd;
+#set ($linksQuery = $services.query.hql('select links.link, count(distinct doc.fullName) from com.xpn.xwiki.doc.XWikiLink links, XWikiDocument doc where links.link not like :slash and links.link not like :space and links.link not like :dollar and doc.id=links.docId group by links.link order by count(distinct doc.fullName) desc, links.link'))&#xd;
+#set ($links = $linksQuery.bindValue('slash').anyChars().literal('/').anyChars().query().bindValue('space').literal(' ').anyChars().query().bindValue('dollar').anyChars().literal('$').anyChars().query().addFilter('hidden').execute())&#xd;
+## $linkNum is an index variable used as the argument for the on-click toggleHidden function for the linked-docs lists. We need this because the loop below iterates over ALL links, not just "wanted" links&#xd;
+#set ($linkNum = 0)&#xd;
+#foreach ($link in $links)&#xd;
+#set ($docsQuery = $services.query.hql('select distinct doc.fullName from XWikiDocument doc, com.xpn.xwiki.doc.XWikiLink links where links.link like :thisLink and doc.id=links.docId order by doc.fullName'))&#xd;
+  ## This next line is what filters out all links to existing pages.&#xd;
+  #if (!$xwiki.exists($link[0]))&#xd;
+    #set ($pageTitle = $link[0].replace('.WebHome',''))&#xd;
+    #set ($createLink = $xwiki.getURL($link[0],'create'))&#xd;
+    {{html}}&#xd;
+      &lt;ul>&#xd;
+        &lt;li>&lt;a href="$createLink" class="wantedLink">$pageTitle&lt;/a> &lt;span class="linkcount" onClick="toggleHidden($linkNum)">($link[1])&lt;/span>&#xd;
+          #set ($linkNum = $linkNum+1) ## Increment $linkNum here.&#xd;
+          &lt;ul class="docsList" hidden>&#xd;
+            #foreach ($page in $docsQuery.bindValue('thisLink').literal($link[0]).query().addFilter('hidden').execute())&#xd;
+              #set ($docLink = $xwiki.getURL($page))&#xd;
+              &lt;li>&lt;a href=$docLink class="linkedDoc">$page&lt;/li>&#xd;
+            #end&#xd;
+          &lt;/ul>&#xd;
+        &lt;/li>&#xd;
+      &lt;/ul>&#xd;
+    {{/html}}&#xd;
+&#xd;
+  #end&#xd;
+#end&#xd;
+{{/velocity}}</content>
+  <object>
+    <name>WantedPages.WantedPagesCode</name>
+    <number>0</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>89329a3a-4219-43e9-9d04-9a84a93b2d22</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <defaultValue>long</defaultValue>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <contenttype>PureText</contenttype>
+        <disabled>0</disabled>
+        <editor>PureText</editor>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>default</cache>
+    </property>
+    <property>
+      <code>function toggleHidden(id) {&#xd;
+  let lists = document.querySelectorAll(".docsList");&#xd;
+  if (lists[id].hidden) {&#xd;
+    lists[id].hidden=false;&#xd;
+  } else {&#xd;
+    lists[id].hidden=true;&#xd;
+  }&#xd;
+}</code>
+    </property>
+    <property>
+      <name>wantedPagesJS</name>
+    </property>
+    <property>
+      <parse>0</parse>
+    </property>
+    <property>
+      <use>currentPage</use>
+    </property>
+  </object>
+  <object>
+    <name>WantedPages.WantedPagesCode</name>
+    <number>0</number>
+    <className>XWiki.StyleSheetExtension</className>
+    <guid>c55ec6e8-0c51-412c-b4a9-51ff667d9922</guid>
+    <class>
+      <name>XWiki.StyleSheetExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <defaultValue>long</defaultValue>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <contenttype>PureText</contenttype>
+        <disabled>0</disabled>
+        <editor>PureText</editor>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <contentType>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>contentType</name>
+        <number>6</number>
+        <prettyName>Content Type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>CSS|LESS</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </contentType>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>default</cache>
+    </property>
+    <property>
+      <code>.linkcount, .linkedDoc {&#xd;
+    font-style: italic;&#xd;
+    color: #787878;&#xd;
+    cursor: pointer;&#xd;
+}&#xd;
+&#xd;
+ul {&#xd;
+  margin-bottom: 0;&#xd;
+}</code>
+    </property>
+    <property>
+      <contentType>CSS</contentType>
+    </property>
+    <property>
+      <name>wantedPagesSheet</name>
+    </property>
+    <property>
+      <parse>0</parse>
+    </property>
+    <property>
+      <use>currentPage</use>
+    </property>
+  </object>
+  <object>
+    <name>WantedPages.WantedPagesCode</name>
+    <number>0</number>
+    <className>XWiki.TagClass</className>
+    <guid>4019d67a-8e26-464d-857d-cd5466bc44c3</guid>
+    <class>
+      <name>XWiki.TagClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <tags>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>input</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>1</multiSelect>
+        <name>tags</name>
+        <number>1</number>
+        <prettyName>Tags</prettyName>
+        <relationalStorage>1</relationalStorage>
+        <separator>|</separator>
+        <separators>|,</separators>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <values/>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </tags>
+    </class>
+    <property>
+      <tags>
+        <value>wiki meta</value>
+      </tags>
+    </property>
+  </object>
+</xwikidoc>
