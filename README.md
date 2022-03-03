@@ -3,7 +3,7 @@
 This is an extension for [XWiki](https://www.xwiki.org), inspired by MediaWiki's [Special:WantedPages](https://www.mediawiki.org/wiki/Special:WantedPages). It contains a small application that includes a page with a dynamic list of non-URL links on your wiki that point to nonexistent documents.
 
 The list includes three main components:
-  - The name (<spaces>.<displayTitle>) of the nonexistent page to which link(s) exist. You can click on the name to be taken to the "create" screen for that page.
+  - The name (\<spaces\>.\<displayTitle\>) of the nonexistent page to which link(s) exist. You can click on the name to be taken to the "create" screen for that page.
   - The number of documents that contain a live link to that nonexistent page. (Note that this counts *documents*, not links.) You can click on the count to reveal...
   - An alphabetical sublist of those document(s)' fullnames. Each list item is a live link to the named page.
 
