@@ -28,7 +28,9 @@ Wanted Pages is not currently an XWiki Contrib project and, as such, is not yet 
 
 # Authors
 
-Eden Biskin, yours truly, is the only author at present. I must also, of course, acknowledge the hard work of the XWiki community for building such a powerful information platform.
+[Eden Biskin](https://github.com/SightSpirit/), yours truly, is the only author at present.
+
+I must also, of course, acknowledge the hard work of the XWiki community for building such a powerful information platform.
   
 # License
   
