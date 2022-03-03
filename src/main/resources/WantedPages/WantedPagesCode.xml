@@ -1,57 +1,75 @@
-<?xml version='1.1' encoding='UTF-8'?>
+<?xml version="1.1" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
 <xwikidoc version="1.4" reference="WantedPages.WantedPagesCode" locale="">
   <web>WantedPages</web>
   <name>WantedPagesCode</name>
   <language/>
-  <defaultLanguage>en</defaultLanguage>
+  <defaultLanguage/>
   <translation>0</translation>
-  <creator>XWiki.Eden</creator>
-  <creationDate>1645727218000</creationDate>
+  <creator>xwiki:XWiki.Admin</creator>
   <parent>xwiki:WantedPages.WantedPagesCode</parent>
-  <author>XWiki.Eden</author>
-  <contentAuthor>XWiki.Eden</contentAuthor>
-  <date>1646251290000</date>
-  <contentUpdateDate>1646250973000</contentUpdateDate>
-  <version>10.8</version>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <version>1.1</version>
   <title>$services.localization.render("wantedPages.applicationName") Code</title>
-  <comment>Update property hidden</comment>
-  <minorEdit>true</minorEdit>
+  <comment/>
+  <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content>{{translation key="wantedPages.description"/}}&#xd;
-&#xd;
-&#xd;
-//{{translation key="wantedPages.hiddenPagesNote"/}}//&#xd;
-&#xd;
-&#xd;
-{{velocity}}&#xd;
-## The first query will fetch each wanted link that is clean and not a URL, as well as the number of documents that include that link at least once.&#xd;
-#set ($linksQuery = $services.query.hql('select links.link, count(distinct doc.fullName) from com.xpn.xwiki.doc.XWikiLink links, XWikiDocument doc where links.link not like :slash and links.link not like :space and links.link not like :dollar and doc.id=links.docId group by links.link order by count(distinct doc.fullName) desc, links.link'))&#xd;
-#set ($links = $linksQuery.bindValue('slash').anyChars().literal('/').anyChars().query().bindValue('space').literal(' ').anyChars().query().bindValue('dollar').anyChars().literal('$').anyChars().query().addFilter('hidden').execute())&#xd;
-## $linkNum is an index variable used as the argument for the on-click toggleHidden function for the linked-docs lists. We need this because the loop below iterates over ALL links, not just "wanted" links&#xd;
-#set ($linkNum = 0)&#xd;
-#foreach ($link in $links)&#xd;
-#set ($docsQuery = $services.query.hql('select distinct doc.fullName from XWikiDocument doc, com.xpn.xwiki.doc.XWikiLink links where links.link like :thisLink and doc.id=links.docId order by doc.fullName'))&#xd;
-  ## This next line is what filters out all links to existing pages.&#xd;
-  #if (!$xwiki.exists($link[0]))&#xd;
-    #set ($pageTitle = $link[0].replace('.WebHome',''))&#xd;
-    #set ($createLink = $xwiki.getURL($link[0],'create'))&#xd;
-    {{html}}&#xd;
-      &lt;ul>&#xd;
-        &lt;li>&lt;a href="$createLink" class="wantedLink">$pageTitle&lt;/a> &lt;span class="linkcount" onClick="toggleHidden($linkNum)">($link[1])&lt;/span>&#xd;
-          #set ($linkNum = $linkNum+1) ## Increment $linkNum here.&#xd;
-          &lt;ul class="docsList" hidden>&#xd;
-            #foreach ($page in $docsQuery.bindValue('thisLink').literal($link[0]).query().addFilter('hidden').execute())&#xd;
-              #set ($docLink = $xwiki.getURL($page))&#xd;
-              &lt;li>&lt;a href=$docLink class="linkedDoc">$page&lt;/li>&#xd;
-            #end&#xd;
-          &lt;/ul>&#xd;
-        &lt;/li>&#xd;
-      &lt;/ul>&#xd;
-    {{/html}}&#xd;
-&#xd;
-  #end&#xd;
-#end&#xd;
+  <content>{{translation key="wantedPages.description"/}}
+
+
+//{{translation key="wantedPages.hiddenPagesNote"/}}//
+
+
+{{velocity}}
+## The first query will fetch each wanted link that is clean and not a URL, as well as the number of documents that include that link at least once.
+#set ($linksQuery = $services.query.hql('select links.link, count(distinct doc.fullName) from com.xpn.xwiki.doc.XWikiLink links, XWikiDocument doc where links.link not like :slash and links.link not like :space and links.link not like :dollar and doc.id=links.docId group by links.link order by count(distinct doc.fullName) desc, links.link'))
+#set ($links = $linksQuery.bindValue('slash').anyChars().literal('/').anyChars().query().bindValue('space').literal(' ').anyChars().query().bindValue('dollar').anyChars().literal('$').anyChars().query().addFilter('hidden').execute())
+## $linkNum is an index variable used as the argument for the on-click toggleHidden function for the linked-docs lists. We need this because the loop below iterates over ALL links, not just "wanted" links
+#set ($linkNum = 0)
+#foreach ($link in $links)
+#set ($docsQuery = $services.query.hql('select distinct doc.fullName from XWikiDocument doc, com.xpn.xwiki.doc.XWikiLink links where links.link like :thisLink and doc.id=links.docId order by doc.fullName'))
+  ## This next line is what filters out all links to existing pages.
+  #if (!$xwiki.exists($link[0]))
+    #set ($pageTitle = $link[0].replace('.WebHome',''))
+    #set ($createLink = $xwiki.getURL($link[0],'create'))
+    {{html}}
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="$createLink" class="wantedLink"&gt;$pageTitle&lt;/a&gt; &lt;span class="linkcount" onClick="toggleHidden($linkNum)"&gt;($link[1])&lt;/span&gt;
+          #set ($linkNum = $linkNum+1) ## Increment $linkNum here.
+          &lt;ul class="docsList" hidden&gt;
+            #foreach ($page in $docsQuery.bindValue('thisLink').literal($link[0]).query().addFilter('hidden').execute())
+              #set ($docLink = $xwiki.getURL($page))
+              &lt;li&gt;&lt;a href=$docLink class="linkedDoc"&gt;$page&lt;/li&gt;
+            #end
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    {{/html}}
+
+  #end
+#end
 {{/velocity}}</content>
   <object>
     <name>WantedPages.WantedPagesCode</name>
@@ -140,13 +158,13 @@
       <cache>default</cache>
     </property>
     <property>
-      <code>function toggleHidden(id) {&#xd;
-  let lists = document.querySelectorAll(".docsList");&#xd;
-  if (lists[id].hidden) {&#xd;
-    lists[id].hidden=false;&#xd;
-  } else {&#xd;
-    lists[id].hidden=true;&#xd;
-  }&#xd;
+      <code>function toggleHidden(id) {
+  let lists = document.querySelectorAll(".docsList");
+  if (lists[id].hidden) {
+    lists[id].hidden=false;
+  } else {
+    lists[id].hidden=true;
+  }
 }</code>
     </property>
     <property>
@@ -264,14 +282,14 @@
       <cache>default</cache>
     </property>
     <property>
-      <code>.linkcount, .linkedDoc {&#xd;
-    font-style: italic;&#xd;
-    color: #787878;&#xd;
-    cursor: pointer;&#xd;
-}&#xd;
-&#xd;
-ul {&#xd;
-  margin-bottom: 0;&#xd;
+      <code>.linkcount, .linkedDoc {
+    font-style: italic;
+    color: #787878;
+    cursor: pointer;
+}
+
+ul {
+  margin-bottom: 0;
 }</code>
     </property>
     <property>

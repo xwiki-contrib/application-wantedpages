@@ -29,12 +29,15 @@
   <version>0.2.0</version>
   <name>Wanted Pages Application</name>
   <description>Provides a page listing and counting non-URL links on your wiki that point to nonexistent documents.</description>
+  <developers>
+    <developer>
+      <id>SightSpirit</id>
+      <name>Eden Biskin</name>
+    </developer>
+  </developers>
+  <properties>
+    <xwiki.clirr.skip>true</xwiki.clirr.skip>
+    <xwiki.extension.category>application</xwiki.extension.category>
+  </properties>
   <packaging>xar</packaging>
-  <dependencies>
-    <dependency>
-      <groupId>org.xwiki.contrib</groupId>
-      <artifactId>parent-platform</artifactId>
-      <version>13.10.3</version>
-    </dependency>
-  </dependencies>
 </project>
