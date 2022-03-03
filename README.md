@@ -1,4 +1,4 @@
-# About
+# About the Wanted Pages Application
 
 This is an extension for [XWiki](https://www.xwiki.org), inspired by MediaWiki's [Special:WantedPages](https://www.mediawiki.org/wiki/Special:WantedPages). It contains a small application that includes a page with a dynamic list of non-URL links on your wiki that point to nonexistent documents.
 
