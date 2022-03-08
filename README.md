@@ -1,4 +1,17 @@
-# About the Wanted Pages Application
+# Wanted Pages Application
+
+Provides a page listing and counting non-URL links on your wiki that point to nonexistent documents.
+
+* Project Lead: [Eden Biskin](https://xwiki.org/xwiki/bin/view/XWiki/EdenBiskin) 
+* [Documentation & Download](https://extensions.xwiki.org/xwiki/bin/view/Extension/Wanted%20Pages%20Application/WebHome) 
+* [Issue Tracker](https://jira.xwiki.org/projects/WANTEDPAGE/issues/)
+* Communication: [Forum](https://forum.xwiki.org)
+* Minimal XWiki version supported: XWiki 13.10.3
+* License: GPLv3.0
+* \[Translations URL coming soon\]
+* Continuous Integration Status: N/A
+
+## About the Wanted Pages Application
 
 This is an extension for [XWiki](https://www.xwiki.org), inspired by MediaWiki's [Special:WantedPages](https://www.mediawiki.org/wiki/Special:WantedPages). It contains a small application that includes a page with a dynamic list of non-URL links on your wiki that point to nonexistent documents.
 
@@ -11,7 +24,7 @@ The list is sorted in descending order based on the number of linking documents,
   
 As the extension installs an application, it is configured to show up in your Applications panel.
   
-# Localization/Translation
+## Localization/Translation
 
 While it is in US English by default, the extension is fully(?) configured for localization. The default translation strings are located in WantedPages.WantedPagesTranslations.
   
@@ -24,14 +37,3 @@ Wanted Pages is not currently an XWiki Contrib project and, as such, is not yet 
 - It is not necessarily optimized for very large wikis. The data is processed synchronously and is not cached.
 - **At the present, I cannot guarantee that it will function as intended on a wiki farm setup.** The database queries that fetch the relevant data do not currently discern among sub-wikis, so if you install this extension on any wiki other than the main one, you may find that the list includes links and documents from other wikis on your farm.
   - This would probably be a relatively simple fix to implement, though my test environment only has one wiki, so others might need to test the eventual fix.
-- As mentioned above, the extension is not yet on the Extension Manager, so you will have to import the XAR manually in order to "install."
-
-# Authors
-
-[Eden Biskin](https://github.com/SightSpirit/), yours truly, is the only author at present.
-
-I must also, of course, acknowledge the hard work of the XWiki community for building such a powerful information platform.
-  
-# License
-  
-[GPLv3](https://www.gnu.org/licenses/gpl-3.0.html), baby.

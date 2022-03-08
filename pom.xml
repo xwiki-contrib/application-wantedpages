@@ -24,11 +24,17 @@
     <artifactId>parent-platform</artifactId>
     <version>13.10.3</version>
   </parent>
-  <groupId>org.xwiki.contrib.wantedpages</groupId>
-  <artifactId>wantedpages-app</artifactId>
-  <version>0.2.2</version>
+  <groupId>org.xwiki.contrib</groupId>
+  <artifactId>application-wantedpages</artifactId>
+  <version>0.3.0</version>
+  <packaging>xar</packaging>
   <name>Wanted Pages Application</name>
   <description>Provides a page listing and counting non-URL links on your wiki that point to nonexistent documents.</description>
+  <scm>
+    <connection>scm:git:git://github.com/xwiki-contrib/application-wantedpages.git</connection>
+    <developerConnection>scm:git:git@github.com:xwiki-contrib/application-wantedpages.git</developerConnection>
+    <url>https://github.com/xwiki-contrib/application-wantedpages</url>
+  </scm>
   <developers>
     <developer>
       <id>SightSpirit</id>
@@ -38,6 +44,7 @@
   <properties>
     <xwiki.clirr.skip>true</xwiki.clirr.skip>
     <xwiki.extension.category>application</xwiki.extension.category>
+    <xwiki.release.jira.skip>false</xwiki.release.jira.skip>
+    <xwiki.issueManagement.jira.id>WANTEDPAGE</xwiki.issueManagement.jira.id>
   </properties>
-  <packaging>xar</packaging>
 </project>
