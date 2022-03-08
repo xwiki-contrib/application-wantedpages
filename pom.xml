@@ -24,9 +24,9 @@
     <artifactId>parent-platform</artifactId>
     <version>13.10.3</version>
   </parent>
-  <groupId>org.xwiki.contrib</groupId>
-  <artifactId>application-wantedpages</artifactId>
-  <version>0.3.0</version>
+  <groupId>org.xwiki.contrib.wantedpages</groupId>
+  <artifactId>wantedpages-app</artifactId>
+  <version>0.2.2</version>
   <name>Wanted Pages Application</name>
   <description>Provides a page listing and counting non-URL links on your wiki that point to nonexistent documents.</description>
   <developers>
