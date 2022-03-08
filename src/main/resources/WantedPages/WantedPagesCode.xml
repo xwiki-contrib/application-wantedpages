@@ -41,12 +41,6 @@
 
 //{{translation key="wantedPages.hiddenPagesNote"/}}//
 
-----
-
-{{html wiki="true"}}
-  &lt;div class="colExp"&gt;[ &lt;a onClick="toggleHiddenAll(true);"&gt;{{translation key="wantedPages.collapseAll"/}}&lt;/a&gt; | &lt;a onClick="toggleHiddenAll(false);"&gt;{{translation key="wantedPages.expandAll"/}}&lt;/a&gt; ]&lt;/div&gt;
-{{/html}}
-
 
 {{velocity}}
 ## The first query will fetch each wanted link that is clean and not a URL, as well as the number of documents that include that link at least once.
@@ -164,20 +158,13 @@
       <cache>default</cache>
     </property>
     <property>
-      <code>var lists = document.querySelectorAll(".docsList");
-
-function toggleHidden(id) {
+      <code>function toggleHidden(id) {
+  let lists = document.querySelectorAll(".docsList");
   if (lists[id].hidden) {
     lists[id].hidden=false;
   } else {
     lists[id].hidden=true;
   }
-}
-
-function toggleHiddenAll(hide) { // hide must be boolean: true to collapse all, false to expand.
-  lists.forEach(function(list) {
-    list.hidden=hide;
-  });
 }</code>
     </property>
     <property>
@@ -301,20 +288,12 @@ function toggleHiddenAll(hide) { // hide must be boolean: true to collapse all, 
     cursor: pointer;
 }
 
-div.colExp {
-  a {
-    color: @text-color;
-    cursor: pointer;
-  }
-}
-
-
 ul {
   margin-bottom: 0;
 }</code>
     </property>
     <property>
-      <contentType>LESS</contentType>
+      <contentType>CSS</contentType>
     </property>
     <property>
       <name>wantedPagesSheet</name>
