@@ -34,11 +34,14 @@
   <title>$services.localization.render("wantedPages.applicationName") Translations</title>
   <comment/>
   <minorEdit>false</minorEdit>
-  <syntaxId>plain/1.0</syntaxId>
+  <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
   <content>wantedPages.applicationName=Wanted Pages
+
 wantedPages.description=The following is a dynamic list of nonexistent documents to which there are links in existing documents. They are listed in descending order from the number of documents linking to them. (The count is listed to the right of the link name.) Clicking on a link will bring you to the page-creation screen for that page. You can click on the count "(#)" to show a list of the documents that link to that nonexistent page.
-wantedPages.hiddenPagesNote=The list below respects your "Display Hidden Pages" preference and, as such, may not be exhaustive.</content>
+wantedPages.hiddenPagesNote=The list below respects your "Display Hidden Pages" preference and, as such, may not be exhaustive.
+wantedPages.collapseAll=Collapse All
+wantedPages.expandAll=Expand All</content>
   <object>
     <name>WantedPages.WantedPagesTranslations</name>
     <number>0</number>

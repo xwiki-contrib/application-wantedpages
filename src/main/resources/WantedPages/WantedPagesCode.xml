@@ -27,7 +27,7 @@
   <defaultLanguage/>
   <translation>0</translation>
   <creator>xwiki:XWiki.Admin</creator>
-  <parent>WebHome</parent>
+  <parent>xwiki:WantedPages.WantedPagesCode</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
   <version>1.1</version>
@@ -40,6 +40,12 @@
 
 
 //{{translation key="wantedPages.hiddenPagesNote"/}}//
+
+----
+
+{{html wiki="true"}}
+  &lt;div class="colExp"&gt;[ &lt;a onClick="toggleHiddenAll(true);"&gt;{{translation key="wantedPages.collapseAll"/}}&lt;/a&gt; | &lt;a onClick="toggleHiddenAll(false);"&gt;{{translation key="wantedPages.expandAll"/}}&lt;/a&gt; ]&lt;/div&gt;
+{{/html}}
 
 
 {{velocity}}
@@ -158,13 +164,20 @@
       <cache>default</cache>
     </property>
     <property>
-      <code>function toggleHidden(id) {
-  let lists = document.querySelectorAll(".docsList");
+      <code>var lists = document.querySelectorAll(".docsList");
+
+function toggleHidden(id) {
   if (lists[id].hidden) {
     lists[id].hidden=false;
   } else {
     lists[id].hidden=true;
   }
+}
+
+function toggleHiddenAll(hide) { // hide must be boolean: true to collapse all, false to expand.
+  lists.forEach(function(list) {
+    list.hidden=hide;
+  });
 }</code>
     </property>
     <property>
@@ -288,12 +301,20 @@
     cursor: pointer;
 }
 
+div.colExp {
+  a {
+    color: @text-color;
+    cursor: pointer;
+  }
+}
+
+
 ul {
   margin-bottom: 0;
 }</code>
     </property>
     <property>
-      <contentType>CSS</contentType>
+      <contentType>LESS</contentType>
     </property>
     <property>
       <name>wantedPagesSheet</name>
