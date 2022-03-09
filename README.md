@@ -8,7 +8,7 @@ Provides a page listing and counting non-URL links on your wiki that point to no
 * Communication: [Forum](https://forum.xwiki.org)
 * Minimal XWiki version supported: XWiki 13.10.3
 * License: GPLv3.0
-* \[Translations URL coming soon\]
+* [Translations](https://l10n.xwiki.org/projects/xwiki-contrib/wanted-pages-application/)
 * Continuous Integration Status: N/A
 
 ## About the Wanted Pages Application
@@ -26,14 +26,19 @@ As the extension installs an application, it is configured to show up in your Ap
   
 ## Localization/Translation
 
-While it is in US English by default, the extension is fully(?) configured for localization. The default translation strings are located in WantedPages.WantedPagesTranslations.
-  
-Wanted Pages is not currently an XWiki Contrib project and, as such, is not yet on XWiki's Weblate instance. Hopefully, this will change in the coming weeks!
+While it is in US English by default, the extension is configured for localization. The default translation strings are located in WantedPages.WantedPagesTranslations.
 
-# Current Limitations
+Please help translate this extension! You can help out on the [XWiki Weblate](https://l10n.xwiki.org/projects/xwiki-contrib/wanted-pages-application/).
+
+### Supported Locales
+  - English (US) [default]
+  - French/français [in progress]
+
+## Current Limitations
 
 - The list is currently just that: a list. You cannot, for instance, modify the sort method without modifying the `order by` clause in WantedPagesCode---in other words, without modifying the code itself.
   - I or another contributor(s) may eventually convert the list to a Livetable object, if this would be feasible.
 - It is not necessarily optimized for very large wikis. The data is processed synchronously and is not cached.
 - **At the present, I cannot guarantee that it will function as intended on a wiki farm setup.** The database queries that fetch the relevant data do not currently discern among sub-wikis, so if you install this extension on any wiki other than the main one, you may find that the list includes links and documents from other wikis on your farm.
   - This would probably be a relatively simple fix to implement, though my test environment only has one wiki, so others might need to test the eventual fix.
+  - There is [a JIRA issue](https://jira.xwiki.org/browse/WANTEDPAGE-1) specifically for addressing this.
