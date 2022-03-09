@@ -36,10 +36,10 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>### Missing: wantedPages.applicationName=Wanted Pages
+  <content>wantedPages.applicationName=Pages demandées
 ### Missing: wantedPages.description=The following is a dynamic list of nonexistent documents to which there are links in existing documents. They are listed in descending order from the number of documents linking to them. (The count is listed to the right of the link name.) Clicking on a link will bring you to the page-creation screen for that page. You can click on the count "(#)" to show a list of the documents that link to that nonexistent page.
-wantedPages.hiddenPagesNote=La liste ci-dessous respecte votre préférence en matière d'affichage des "pages cachées" et, à ce titre, peut ne pas être exhaustive.
-### Missing: wantedPages.collapseAll=Collapse All
-### Missing: wantedPages.expandAll=Expand All
+wantedPages.hiddenPagesNote=La liste ci-dessous respecte votre préférence en matière d'affichage des "pages masquées" et, à ce titre, peut ne pas être exhaustive.
+wantedPages.collapseAll=Tout réduire
+wantedPages.expandAll=Tout déplier
 </content>
   </xwikidoc>
