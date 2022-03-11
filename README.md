@@ -4,7 +4,7 @@ Provides a page listing and counting non-URL links on your wiki that point to no
 
 * Project Lead: [Eden Biskin](https://xwiki.org/xwiki/bin/view/XWiki/EdenBiskin) 
 * [Documentation & Download](https://extensions.xwiki.org/xwiki/bin/view/Extension/Wanted%20Pages%20Application/WebHome) 
-* [Issue Tracker](https://jira.xwiki.org/projects/WANTEDPAGE/issues/)
+* [Issue Tracker](https://jira.xwiki.org/projects/WANTEDPAGE/issues)
 * Communication: [Forum](https://forum.xwiki.org)
 * Minimal XWiki version supported: XWiki 13.10.3
 * License: GPLv3.0
@@ -21,9 +21,9 @@ The list includes three main components:
   - An alphabetical sublist of those document(s)' fullnames. Each list item is a live link to the named page.
 
 The list is sorted in descending order based on the number of linking documents, then in ascending alphabetical order. It also respects the "displayHiddenDocuments" user preference, so if that is set to `false`, the list will not include or count documents marked as hidden.
-  
+
 As the extension installs an application, it is configured to show up in your Applications panel.
-  
+
 ## Localization/Translation
 
 While it is in US English by default, the extension is configured for localization. The default translation strings are located in WantedPages.WantedPagesTranslations.
@@ -33,6 +33,7 @@ Please help translate this extension! You can help out on the [XWiki Weblate](ht
 ### Supported Locales
   - English (US) [default]
   - French/français [in progress]
+  - German/Deutsch
 
 ## Current Limitations
 
