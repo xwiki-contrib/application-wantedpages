@@ -38,7 +38,7 @@
   <hidden>true</hidden>
   <content>### Missing: wantedPages.applicationName=Wanted Pages
 ### Missing: wantedPages.description=The following is a dynamic list of nonexistent documents to which there are links in existing documents. They are listed in descending order from the number of documents linking to them. (The count is listed to the right of the link name.) Clicking on a link will bring you to the page-creation screen for that page. You can click on the count "(#)" to show a list of the documents that link to that nonexistent page.
-### Missing: wantedPages.hiddenPagesNote=The list below respects your "Display Hidden Pages" preference and, as such, may not be exhaustive.
+wantedPages.hiddenPagesNote=以下の一覧は「非表示のページを表示」設定に従うため、完全ではない可能性があります。
 wantedPages.collapseAll=全て折りたたむ
 ### Missing: wantedPages.expandAll=Expand All
 </content>
