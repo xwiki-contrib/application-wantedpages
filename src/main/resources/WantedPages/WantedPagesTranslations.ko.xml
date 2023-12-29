@@ -1,1 +1,45 @@
+<?xml version="1.1" encoding="UTF-8"?>
 
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.4" reference="WantedPages.WantedPagesTranslations" locale="ko">
+  <web>WantedPages</web>
+  <name>WantedPagesTranslations</name>
+  <language>ko</language>
+  <defaultLanguage>en</defaultLanguage>
+  <translation>1</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <parent>WebHome</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <version>1.1</version>
+  <title>$services.localization.render("wantedPages.applicationName") Translations</title>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>plain/1.0</syntaxId>
+  <hidden>true</hidden>
+  <content>wantedPages.applicationName=원하는 페이지
+wantedPages.description=다음은 기존 문서에 링크가 있는 존재하지 않는 문서의 동적 목록입니다. 해당 문서는 연결된 문서 수의 내림차순으로 나열됩니다. (링크 이름 오른쪽에 개수가 표시됩니다.) 링크를 클릭하면 해당 페이지의 페이지 생성 화면으로 이동합니다. "(#)" 개수를 클릭하면 존재하지 않는 페이지로 연결되는 문서 목록이 표시됩니다.
+wantedPages.hiddenPagesNote=아래 목록은 귀하의 "숨겨진 페이지 표시" 기본 설정을 존중하므로 전체 목록이 아닐 수도 있습니다.
+wantedPages.collapseAll=모든 축소
+wantedPages.expandAll=모두 확장
+</content>
+  </xwikidoc>
