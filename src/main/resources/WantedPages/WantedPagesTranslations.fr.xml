@@ -37,7 +37,7 @@
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
   <content>wantedPages.applicationName=Pages demandées
-### Missing: wantedPages.description=The following is a dynamic list of nonexistent documents to which there are links in existing documents. They are listed in descending order from the number of documents linking to them. (The count is listed to the right of the link name.) Clicking on a link will bring you to the page-creation screen for that page. You can click on the count "(#)" to show a list of the documents that link to that nonexistent page.
+wantedPages.description=Voici une liste dynamique de documents inexistants vers lesquels pointent des liens depuis des documents existants. Ils sont classés par ordre décroissant du nombre de documents qui y font référence (le nombre est indiqué à droite du nom du lien). Cliquer sur un lien vous mènera à l’écran de création de la page correspondante. Vous pouvez également cliquer sur le nombre "(#)" pour afficher la liste des documents qui renvoient vers cette page inexistante.
 wantedPages.hiddenPagesNote=La liste ci-dessous respecte votre préférence en matière d'affichage des "pages masquées" et, à ce titre, peut ne pas être exhaustive.
 wantedPages.collapseAll=Tout réduire
 wantedPages.expandAll=Tout déplier
