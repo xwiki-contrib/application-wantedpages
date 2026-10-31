@@ -36,10 +36,10 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>### Missing: wantedPages.applicationName=
-### Missing: wantedPages.description=
-### Missing: wantedPages.hiddenPagesNote=
-### Missing: wantedPages.collapseAll=
-### Missing: wantedPages.expandAll=
+  <content>wantedPages.applicationName=Ønskede sider
+wantedPages.description=Her er en dynamisk liste over dokumenter, der ikke findes, men som der er links til i eksisterende dokumenter. De står i faldende rækkefølge efter antallet af dokumenter, der linker til dem. (Antallet står til højre for linkets navn.) Klikker du på et link, kommer du til siden, hvor du kan oprette siden. Du kan klikke på antallet "(#)" for at se en liste over de dokumenter, der linker til den manglende side.
+wantedPages.hiddenPagesNote=Listen nedenfor tager højde for din indstilling "Vis skjulte sider" og er derfor måske ikke fuldstændig.
+wantedPages.collapseAll=Fold alle sammen
+wantedPages.expandAll=Fold alle ud
 </content>
 </xwikidoc>
